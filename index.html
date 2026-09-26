@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Іспанія</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fcf8e3;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            background-color: #fdfaf0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #faebcc;
+        }
+
+        .top-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .text-content {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .image-container {
+            position: relative;
+            flex: 0 0 40%;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            display: block;
+        }
+
+        /* Прапор Іспанії поверх зображення */
+        .flag-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            border: 1px solid rgba(0,0,0,0.15);
+        }
+
+        .questions-section {
+            border-top: 2px dashed #faebcc;
+            padding-top: 25px;
+        }
+
+        .questions-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+        }
+
+        .question-item label {
+            display: block;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        /* Блок для конструктора речень з select та input */
+        .sentence-builder {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            background-color: #fff9e6;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px dashed #e6c875;
+        }
+
+        .sentence-builder select,
+        .sentence-builder input[type="text"] {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #fff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .sentence-builder select {
+            cursor: pointer;
+        }
+
+        .sentence-builder input[type="text"] {
+            width: 180px;
+        }
+
+        .sentence-builder select:focus,
+        .sentence-builder input[type="text"]:focus {
+            border-color: #2196F3;
+        }
+
+        /* Підсвічування відповідей */
+        .sentence-builder select.correct,
+        .sentence-builder input[type="text"].correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+        }
+
+        .sentence-builder select.incorrect,
+        .sentence-builder input[type="text"].incorrect {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+        }
+
+        .check-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.2s;
+        }
+
+        .check-btn:hover {
+            background-color: #1976D2;
+        }
+
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+            }
+            .image-container {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="top-section">
+        <div class="text-content">
+            Іспанія — це сонячна та мальовнича країна, розташована на південному заході Європи на Піренейському півострові. Столицею Іспанії є величне місто Мадрид, відоме своїми музеями, красивими площами та королівським палацом. Країна омивається водами Атлантичного океану та Середземного моря. Одним із найвідоміших архітектурних символів Іспанії є унікальний собор Саграда Фамілія, розташований у місті Барселона. Державний прапор Іспанії складається з трьох горизонтальних смуг — червоної, жовтої та червоної — із зображенням герба. Іспанці славляться своєю багатою культурою, традиційним танцем фламенко та смачною стравою паельєю.
+        </div>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=800&auto=format&fit=crop" alt="Собор Саграда Фамілія, Іспанія" class="main-image">
+            <img src="https://flagcdn.com/w320/es.png" alt="Прапор Іспанії" class="flag-overlay">
+        </div>
+    </div>
+
+    <div class="questions-section">
+        <div class="questions-title">Запитання за текстом (обери початок та впиши відповідь):</div>
+
+        <form id="quizForm">
+            
+            <!-- Питання 1 -->
+            <div class="question-item">
+                <label>1. Яке місто є столицею Іспанії?</label>
+                <div class="sentence-builder">
+                    <select id="q1_1">
+                        <option value="">-- вибери початок --</option>
+                        <option value="1">Столицею Іспанії</option>
+                        <option value="0">Прапором Іспанії</option>
+                        <option value="0">Собором Іспанії</option>
+                    </select>
+                    
+                    <select id="q1_2">
+                        <option value="">-- вибери продовження --</option>
+                        <option value="1">є місто</option>
+                        <option value="0">омивається в</option>
+                        <option value="0">танцює біля</option>
+                    </select>
+
+                    <input type="text" id="q1_3" placeholder="впиши місто..." autocomplete="off">
+                    <span style="font-weight: bold; font-size: 18px;">.</span>
+                </div>
+            </div>
+
+            <!-- Питання 2 -->
+            <div class="question-item">
+                <label>2. У якому місті розташований знаменитий собор Саграда Фамілія?</label>
+                <div class="sentence-builder">
+                    <select id="q2_1">
+                        <option value="">-- вибери початок --</option>
+                        <option value="1">Собор Саграда Фамілія</option>
+                        <option value="0">Королівський палац</option>
+                        <option value="0">Танець фламенко</option>
+                    </select>
+
+                    <select id="q2_2">
+                        <option value="">-- вибери продовження --</option>
+                        <option value="1">розташований у місті</option>
+                        <option value="0">омивається в</option>
+                        <option value="0">зацвітає біля</option>
+                    </select>
+
+                    <input type="text" id="q2_3" placeholder="назва міста..." autocomplete="off">
+                    <span style="font-weight: bold; font-size: 18px;">.</span>
+                </div>
+            </div>
+
+            <!-- Питання 3 -->
+            <div class="question-item">
+                <label>3. Водами якого моря омивається Іспанія?</label>
+                <div class="sentence-builder">
+                    <select id="q3_1">
+                        <option value="">-- вибери початок --</option>
+                        <option value="1">Країна Іспанія</option>
+                        <option value="0">Місто Мадрид</option>
+                        <option value="0">Прапор країни</option>
+                    </select>
+
+                    <select id="q3_2">
+                        <option value="">-- вибери продовження --</option>
+                        <option value="1">омивається водами</option>
+                        <option value="0">перетинається річкою</option>
+                        <option value="0">прикрашається цвітом</option>
+                    </select>
+
+                    <input type="text" id="q3_3" placeholder="назва моря..." autocomplete="off">
+                    <span style="font-weight: bold; font-size: 18px;">.</span>
+                </div>
+            </div>
+
+            <!-- Питання 4 -->
+            <div class="question-item">
+                <label>4. Яка традиційна відома страва є в Іспанії?</label>
+                <div class="sentence-builder">
+                    <select id="q4_1">
+                        <option value="">-- вибери початок --</option>
+                        <option value="1">Традиційною стравою</option>
+                        <option value="0">Головним собором</option>
+                        <option value="0">Великим океаном</option>
+                    </select>
+
+                    <select id="q4_2">
+                        <option value="">-- вибери продовження --</option>
+                        <option value="1">в Іспанії є</option>
+                        <option value="0">в Азії є</option>
+                        <option value="0">в океані є</option>
+                    </select>
+
+                    <input type="text" id="q4_3" placeholder="назва страви..." autocomplete="off">
+                    <span style="font-weight: bold; font-size: 18px;">.</span>
+                </div>
+            </div>
+
+            <!-- Питання 5 -->
+            <div class="question-item">
+                <label>5. На якому півострові розташована Іспанія?</label>
+                <div class="sentence-builder">
+                    <select id="q5_1">
+                        <option value="">-- вибери початок --</option>
+                        <option value="1">Іспанія розташована</option>
+                        <option value="0">Барселона заснована</option>
+                        <option value="0">Паелья готується</option>
+                    </select>
+
+                    <select id="q5_2">
+                        <option value="">-- вибери продовження --</option>
+                        <option value="1">на красивому</option>
+                        <option value="0">біля високого</option>
+                        <option value="0">серед глибокого</option>
+                    </select>
+
+                    <input type="text" id="q5_3" placeholder="назва півострова..." autocomplete="off">
+                    <span style="font-weight: bold; font-size: 18px;">.</span>
+                </div>
+            </div>
+
+            <button type="button" class="check-btn" onclick="checkAnswers()">Перевірити відповіді</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        // Список випадаючих списків (вибір зі списків)
+        const selects = [
+            'q1_1', 'q1_2',
+            'q2_1', 'q2_2',
+            'q3_1', 'q3_2',
+            'q4_1', 'q4_2',
+            'q5_1', 'q5_2'
+        ];
+
+        // Карта для перевірки текстових полів (ID поля: частина правильного слова)
+        const textInputs = {
+            q1_3: 'мадрид',
+            q2_3: 'барселон',
+            q3_3: 'середземн',
+            q4_3: 'паель',
+            q5_3: 'піренейськ'
+        };
+
+        let allCorrect = true;
+
+        // 1. Перевірка списків select
+        selects.forEach(id => {
+            const el = document.getElementById(id);
+            el.classList.remove('correct', 'incorrect');
+
+            if (el.value === '1') {
+                el.classList.add('correct');
+            } else {
+                el.classList.add('incorrect');
+                allCorrect = false;
+            }
+        });
+
+        // 2. Перевірка введеного тексту в input
+        for (let id in textInputs) {
+            const input = document.getElementById(id);
+            input.classList.remove('correct', 'incorrect');
+            const val = input.value.trim().toLowerCase();
+
+            if (val !== '' && val.includes(textInputs[id])) {
+                input.classList.add('correct');
+            } else {
+                input.classList.add('incorrect');
+                allCorrect = false;
+            }
+        }
+
+        // Повідомлення результату
+        if (allCorrect) {
+            alert('Чудово! Всі речення побудовані та заповнені абсолютно правильно!');
+        } else {
+            alert('Деякі варіанти обрані або введені неправильно. Спробуй ще раз!');
+        }
+    }
+</script>
+
+</body>
+</html>
